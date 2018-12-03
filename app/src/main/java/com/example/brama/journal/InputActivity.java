@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class InputActivity extends AppCompatActivity {
 
     private String mood;
-    ImageView lastClicked;
+    private ImageView lastClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
