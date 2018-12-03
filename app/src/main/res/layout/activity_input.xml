@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".InputActivity">
+
+    <EditText
+        android:id="@+id/inputTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/inputContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="How was your day?"
+        android:inputType="textPersonName" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/mood1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="chooseMood"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/love_lovely" />
+
+        <ImageButton
+            android:id="@+id/mood2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="chooseMood"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/smile" />
+
+        <ImageButton
+            android:id="@+id/mood3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="chooseMood"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/icon" />
+
+        <ImageButton
+            android:id="@+id/mood4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="chooseMood"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            tools:srcCompat="@drawable/sick_ill_trouble" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="submitEntry"
+        android:text="Submit entry!" />
+</LinearLayout>
