@@ -12,6 +12,7 @@
         android:id="@+id/inputTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:ems="10"
         android:hint="Title"
         android:inputType="textPersonName" />
@@ -19,15 +20,16 @@
     <EditText
         android:id="@+id/inputContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
         android:ems="10"
         android:hint="How was your day?"
         android:inputType="textPersonName" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
         android:orientation="horizontal">
 
         <ImageButton
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="@color/colorPrimary"
             android:clickable="true"
             android:onClick="chooseMood"
             android:scaleType="fitCenter"
@@ -46,10 +49,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/colorPrimary"
             android:clickable="true"
             android:onClick="chooseMood"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
             app:srcCompat="@drawable/smile" />
 
         <ImageButton
@@ -57,10 +61,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/colorPrimary"
             android:clickable="true"
             android:onClick="chooseMood"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
             app:srcCompat="@drawable/icon" />
 
         <ImageButton
@@ -68,17 +73,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/colorPrimary"
             android:clickable="true"
             android:onClick="chooseMood"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            tools:srcCompat="@drawable/sick_ill_trouble" />
+            app:srcCompat="@drawable/sick_ill_trouble" />
+
     </LinearLayout>
 
     <Button
         android:id="@+id/submitEntry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:onClick="submitEntry"
         android:text="Submit entry!" />
 </LinearLayout>

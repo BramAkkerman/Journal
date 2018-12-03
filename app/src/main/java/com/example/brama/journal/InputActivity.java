@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class InputActivity extends AppCompatActivity {
 
     private String mood;
+    ImageView lastClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,18 +21,28 @@ public class InputActivity extends AppCompatActivity {
     }
 
     public void chooseMood(View v) {
+        if (lastClicked != null)
+            lastClicked.setBackgroundResource(R.color.colorPrimary);
         switch (v.getId()) {
             case R.id.mood1:
                 mood = "love_lovely";
+                lastClicked = findViewById(R.id.mood1);
+                v.setBackgroundResource(R.color.colorPrimaryDark);
                 break;
             case R.id.mood2:
                 mood = "smile";
+                lastClicked = findViewById(R.id.mood2);
+                v.setBackgroundResource(R.color.colorPrimaryDark);
                 break;
             case R.id.mood3:
                 mood = "icon";
+                lastClicked = findViewById(R.id.mood3);
+                v.setBackgroundResource(R.color.colorPrimaryDark);
                 break;
             case R.id.mood4:
                 mood = "sick_ill_trouble";
+                lastClicked = findViewById(R.id.mood4);
+                v.setBackgroundResource(R.color.colorPrimaryDark);
                 break;
         }
     }
