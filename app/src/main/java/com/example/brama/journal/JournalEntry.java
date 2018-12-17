@@ -2,6 +2,7 @@ package com.example.brama.journal;
 
 import java.io.Serializable;
 
+// This class stores a JournalEntry when retrieved from the database
 public class JournalEntry implements Serializable {
     private String title;
     private String content;

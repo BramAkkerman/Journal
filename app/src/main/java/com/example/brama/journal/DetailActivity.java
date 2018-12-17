@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+// Shows the detailed information of a journal entry
 public class DetailActivity extends AppCompatActivity {
 
     @Override

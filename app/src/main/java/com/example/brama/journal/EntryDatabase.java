@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import static java.sql.Types.BLOB;
 import static java.sql.Types.INTEGER;
 
+// This class writes to a database using SQLite
 public class EntryDatabase extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "journal";
@@ -67,6 +68,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // Insert a new entry in the database
     public void insert(JournalEntry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues addValues = new ContentValues();

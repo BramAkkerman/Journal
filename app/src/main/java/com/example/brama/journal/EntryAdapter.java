@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
+// This adapter fills the journal list on the main page
 public class EntryAdapter extends ResourceCursorAdapter {
     public EntryAdapter(Context context, Cursor cursor) {
         super(context, R.layout.entry_row, cursor);

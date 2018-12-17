@@ -1,16 +1,14 @@
 package com.example.brama.journal;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+// The main screen of the Journal app showing all Journal entries
 public class MainActivity extends AppCompatActivity {
 
     EntryDatabase db;
@@ -27,34 +25,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new EntryAdapter(getApplicationContext(),db.selectAll());
         journalList.setAdapter(adapter);
 
-        journalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Cursor cursor = (Cursor) parent.getItemAtPosition(position);
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        journalList.setOnItemClickListener(new onEntryClick());
 
-                String title = cursor.getString(cursor.getColumnIndex("title"));
-                String mood = cursor.getString(cursor.getColumnIndex("mood"));
-                String content = cursor.getString(cursor.getColumnIndex("content"));
-                String date = cursor.getString(cursor.getColumnIndex("date"));
-
-                intent.putExtra("title",title);
-                intent.putExtra("mood",mood);
-                intent.putExtra("content",content);
-                intent.putExtra("date",date);
-
-                startActivity(intent);
-            }
-        });
-
-        journalList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(final AdapterView<?> parent, View view, final int position, long id) {
-                cursor = (Cursor) parent.getItemAtPosition(position);
-                findViewById(R.id.dialogBox).setVisibility(View.VISIBLE);
-                return true;
-            }
-        });
+        journalList.setOnItemLongClickListener(new onEntryLongClick());
     }
 
     @Override
@@ -68,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // When a user long clicks on an entry, a dialog box pops up to ask if the user really wants
+    // to delete the entry
     public void deleteEntry(View v) {
         int dbid = cursor.getInt(cursor.getColumnIndex("_id"));
         db.delete(dbid);
@@ -75,11 +50,44 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.dialogBox).setVisibility(View.INVISIBLE);
     }
 
+    // If the user decides not to delete the entry
     public void dontDelete(View v) {
         findViewById(R.id.dialogBox).setVisibility(View.INVISIBLE);
     }
 
+    // Whenever an entry is deleted, update the screen
     private void updateData() {
         adapter.swapCursor(db.selectAll());
+    }
+
+    // When clicked on an entry
+    private class onEntryClick implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Cursor cursor = (Cursor) parent.getItemAtPosition(position);
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            String mood = cursor.getString(cursor.getColumnIndex("mood"));
+            String content = cursor.getString(cursor.getColumnIndex("content"));
+            String date = cursor.getString(cursor.getColumnIndex("date"));
+
+            intent.putExtra("title", title);
+            intent.putExtra("mood", mood);
+            intent.putExtra("content", content);
+            intent.putExtra("date", date);
+
+            startActivity(intent);
+        }
+    }
+
+    // When long clicked on an entry
+    private class onEntryLongClick implements AdapterView.OnItemLongClickListener {
+        @Override
+        public boolean onItemLongClick(final AdapterView<?> parent, View view, final int position, long id) {
+            cursor = (Cursor) parent.getItemAtPosition(position);
+            findViewById(R.id.dialogBox).setVisibility(View.VISIBLE);
+            return true;
+        }
     }
 }
