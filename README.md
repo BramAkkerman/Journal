@@ -14,6 +14,7 @@ Input activity
 <img src="https://github.com/BramAkkerman/Journal/blob/master/doc/SelectMood.png" />
 
 Delete entry
+
 A dialog box pops up asking the user if they really want to delete the entry
 
 <img src="https://github.com/BramAkkerman/Journal/blob/master/doc/DeleteScreen.png" />
